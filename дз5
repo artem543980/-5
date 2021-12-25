@@ -13,6 +13,13 @@ void print_matrix(int** array, int N, int M) {
 
 }
 
+void delete_matrix(int** array, int N, int M) {
+	for (int i = 0; i < N; i++) {
+		delete[] array[i];
+	}
+	delete array;
+}
+
 void random_matrix(int** array, int N, int M) {
 	for (int i = 0; i < N; i++)
 	{
@@ -24,7 +31,7 @@ void random_matrix(int** array, int N, int M) {
 //��1
 
 void swap(int** array, int N, int M) {
-	int* mass = new int [N];
+	int* mass = new int[N];
 	int a = rand() % N;
 	int b = rand() % N;
 	for (int i = 0; i < N; i++)
@@ -33,7 +40,7 @@ void swap(int** array, int N, int M) {
 		array[a][i] = array[b][i];
 		array[b][i] = mass[i];
 	}
-    print_matrix(array, N, M);
+	print_matrix(array, N, M);
 }
 
 
@@ -61,7 +68,7 @@ void sumM(int** array, int N, int M) {
 		}
 		cout << sum << " ";
 	}
- }
+}
 
 int main() {
 	srand(time(0));
@@ -78,7 +85,8 @@ int main() {
 	cout << endl;
 	cout << variable(array, N, M);
 	cout << endl;
-    sumM(array, N, M);
+	sumM(array, N, M);
+	delete_matrix(array, N, M);
 	system("pause");
 	return 0;
 }
